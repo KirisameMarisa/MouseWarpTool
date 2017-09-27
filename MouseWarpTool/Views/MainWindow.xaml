@@ -1,0 +1,33 @@
+﻿<Window x:Class="MouseWarpTool.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:v="clr-namespace:MouseWarpTool.Views"
+        xmlns:vm="clr-namespace:MouseWarpTool.ViewModels"
+        xmlns:bhv="clr-namespace:MouseWarpTool.Views.Behavior"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Window.DataContext>
+        <vm:MainViewModel></vm:MainViewModel>
+    </Window.DataContext>
+    <i:Interaction.Triggers>
+        <l:InteractionMessageTrigger MessageKey="WrapToolWindow" Messenger="{Binding Messenger}">
+            <l:TransitionInteractionMessageAction InvokeActionOnlyWhenWindowIsActive="False" WindowType="{x:Type v:WrapToolWindow}" />
+        </l:InteractionMessageTrigger>
+    </i:Interaction.Triggers>
+    
+        <i:Interaction.Behaviors>
+        <bhv:MouseClickBeavior Command="{Binding ExecuteCommand}" />
+    </i:Interaction.Behaviors>
+
+    <Grid>
+
+    </Grid>
+</Window>

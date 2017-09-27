@@ -1,0 +1,40 @@
+﻿<Window x:Class="MouseWarpTool.Views.ScreenHintWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:contrl="clr-namespace:MouseWarpTool.Views.Control"
+        xmlns:msg="clr-namespace:MouseWarpTool.Messages"
+        xmlns:local="clr-namespace:MouseWarpTool.Views"
+        mc:Ignorable="d"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="ScreenHintWindow" Height="300" Width="300" Opacity="0.0">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="00:00:0.1" Storyboard.TargetProperty="Opacity" To="1" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <i:Interaction.Triggers>
+        <l:InteractionMessageTrigger MessageKey="ResizeMessage" Messenger="{Binding Messenger}">
+            <msg:WindowStateAction InvokeActionOnlyWhenWindowIsActive="False" />
+        </l:InteractionMessageTrigger>
+        <l:InteractionMessageTrigger MessageKey="CloseMessage" Messenger="{Binding Messenger}">
+            <l:WindowInteractionMessageAction  InvokeActionOnlyWhenWindowIsActive="False" />
+        </l:InteractionMessageTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <contrl:OutlinedTextBlock Text="{Binding Number}" FontFamily="Verdana" FontSize="100pt" FontWeight="ExtraBold" TextWrapping="Wrap" StrokeThickness="3" Stroke="Black" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+</Window>
