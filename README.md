@@ -1,9 +1,9 @@
 ## About this Project
-Using Live2D to make desktop mascot program.
+This project is a tool to warp the mouse pointer to the target monitor
 
-Efficiency of your work in that there are cute characters will go up.
+You will not lose track of your mouse pointer with this tool!
 
-let's together Babumi!
+To use it, just press and hold the middle button of the mouse!
 
 ## Contributing
 Please report to Issues if you find any problems.
