@@ -40,7 +40,7 @@ namespace MouseWarpTool.ViewModels
             //!< メインディスプレイ情報
             var mainDisplay = Display.GetMainDisplay();
             Messenger.Raise(new WindowStateMessage("ResizeMessage", Display.GetCenterPoint(mainDisplay.Bounds), new Point(300, System.Windows.Forms.Screen.AllScreens.Length * ButtonHeight)));
-            Messenger.Raise(new WindowClipMessage(true, "MouseClipMessage"));
+            Messenger.Raise(new WindowClipMessage(true, "WindowClipMessage"));
             _listCollection.Add(new DisplayNode(0, new Point { X = (int)mainDisplay.Bounds.X, Y = (int)mainDisplay.Bounds.Y }, ButtonHeight, Messenger));
 
             // サブディスプレイ情報

@@ -44,7 +44,7 @@ namespace MouseWarpTool.ViewModels
         private ViewModelCommand _command;
         public ViewModelCommand Command => _command ?? (_command = new ViewModelCommand(() =>
         {
-            _messenger.Raise(new WindowClipMessage(false, "MouseClipMessage"));
+            _messenger.Raise(new WindowClipMessage(false, "WindowClipMessage"));
             _messenger.Raise(new MouseMoveMessage("MouseMoveMessage", _location));
             _messenger.Raise(new WindowActionMessage(WindowAction.Close, "CloseMessage"));
         }));

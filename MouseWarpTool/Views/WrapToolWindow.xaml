@@ -47,8 +47,8 @@
         <l:InteractionMessageTrigger MessageKey="MouseMoveMessage" Messenger="{Binding Messenger}">
             <msg:MouseMoveAction InvokeActionOnlyWhenWindowIsActive="False" />
         </l:InteractionMessageTrigger>
-        <l:InteractionMessageTrigger MessageKey="MouseClipMessage" Messenger="{Binding Messenger}">
-            <msg:WindowCkipAction InvokeActionOnlyWhenWindowIsActive="False" />
+        <l:InteractionMessageTrigger MessageKey="WindowClipMessage" Messenger="{Binding Messenger}">
+            <msg:WindowClipAction InvokeActionOnlyWhenWindowIsActive="False" />
         </l:InteractionMessageTrigger>
     </i:Interaction.Triggers>
     <Grid>

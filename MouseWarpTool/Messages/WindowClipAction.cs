@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 
 namespace MouseWarpTool.Messages
 {
-    class WindowCkipAction : InteractionMessageAction<Window>
+    class WindowClipAction : InteractionMessageAction<Window>
     {
         protected override void InvokeAction(InteractionMessage message)
         {

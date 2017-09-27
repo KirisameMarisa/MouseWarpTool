@@ -77,7 +77,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Messages\WindowCkipAction.cs" />
+    <Compile Include="Messages\WindowClipAction.cs" />
     <Compile Include="Messages\WindowClipMessage.cs" />
     <Compile Include="Models\Display.cs" />
     <Compile Include="ViewModels\DisplayNode.cs" />

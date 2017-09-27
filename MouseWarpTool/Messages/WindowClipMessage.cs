@@ -27,7 +27,7 @@ namespace MouseWarpTool.Messages
 
         protected override System.Windows.Freezable CreateInstanceCore()
         {
-            return new WindowClipMessage(MessageKey);
+            return new WindowClipMessage(IsClip, MessageKey);
         }
     }
 }
