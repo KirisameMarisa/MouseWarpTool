@@ -63,13 +63,15 @@ namespace MouseWarpTool.Views.Behavior
                 return;
             }
 
-            _timer.Interval = 500;
+            _timer.Interval = 1;
             _timer.Start();
             _timer.Tick += (s, t) =>
             {
                 _count++;
-                if (_count >= 6)
+                if (_count >= 1000)
                 {
+                    _count = 0;
+                    _timer.Stop();
                     if (Command != null && Command.CanExecute(sender))
                     {
                         Command.Execute(args);
