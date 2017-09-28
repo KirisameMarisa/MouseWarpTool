@@ -89,7 +89,6 @@
     <Compile Include="Messages\MouseMoveAction.cs" />
     <Compile Include="Messages\MouseMoveMessage.cs" />
     <Compile Include="Views\Behavior\MouseClickBeavior.cs" />
-    <Compile Include="Views\Control\OutlinedTextBlock.cs" />
     <Compile Include="Views\ScreenHintWindow.xaml.cs">
       <DependentUpon>ScreenHintWindow.xaml</DependentUpon>
     </Compile>

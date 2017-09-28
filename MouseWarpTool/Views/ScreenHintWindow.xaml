@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
-        xmlns:contrl="clr-namespace:MouseWarpTool.Views.Control"
         xmlns:msg="clr-namespace:MouseWarpTool.Messages"
         xmlns:local="clr-namespace:MouseWarpTool.Views"
         mc:Ignorable="d"
@@ -35,6 +34,13 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <contrl:OutlinedTextBlock Text="{Binding Number}" FontFamily="Verdana" FontSize="100pt" FontWeight="ExtraBold" TextWrapping="Wrap" StrokeThickness="3" Stroke="Black" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Text="{Binding Number}" Foreground="White" FontFamily="Verdana" FontSize="100pt"  FontWeight="ExtraBold" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="3"
+                    Color="Black"
+                    Opacity="1"
+                    BlurRadius="5"/>
+            </TextBlock.Effect>
+        </TextBlock>
     </Grid>
 </Window>

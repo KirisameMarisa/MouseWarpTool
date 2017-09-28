@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interactivity;
+using System.Windows.Threading;
 
 namespace MouseWarpTool.Views.Behavior
 {
@@ -17,7 +18,7 @@ namespace MouseWarpTool.Views.Behavior
 
         private int _count = 0;
 
-        private System.Windows.Forms.Timer _timer = new System.Windows.Forms.Timer();
+        private System.Windows.Threading.DispatcherTimer _timer = new System.Windows.Threading.DispatcherTimer(DispatcherPriority.Normal);
 
         /// <summary>
         /// マウスクリックした時に実行されるコマンド
@@ -63,12 +64,13 @@ namespace MouseWarpTool.Views.Behavior
                 return;
             }
 
-            _timer.Interval = 1;
+            _timer.Interval = TimeSpan.FromMilliseconds(100);
             _timer.Start();
             _timer.Tick += (s, t) =>
             {
                 _count++;
-                if (_count >= 1000)
+                //!< 3秒待ち
+                if (_count >= 3 * 10)
                 {
                     _count = 0;
                     _timer.Stop();
