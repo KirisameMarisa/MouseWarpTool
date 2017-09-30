@@ -24,7 +24,7 @@ namespace MouseWarpTool.Models
 
         public static Config DefaultConfig()
         {
-            return new Config { IgnitionTime = 30 };
+            return new Config { IgnitionTime = 3 };
         }
     }
 }

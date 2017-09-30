@@ -33,7 +33,10 @@ namespace MouseWarpTool.Models
             Config config = new Config();
             try
             {
-                using (var fs = new FileStream(Directory.GetCurrentDirectory() + "\\" + xml, FileMode.Open))
+                string path = Directory.GetCurrentDirectory() + "\\" + xml;
+                //!< ReadOnlyを削除
+                EraceFileAttribute(path, FileAttributes.ReadOnly);
+                using (var fs = new FileStream(path, FileMode.Open))
                 {
                     // XmlSerializerを使ってファイルに保存
                     XmlSerializer serializer = new XmlSerializer(typeof(Config));
@@ -61,13 +64,33 @@ namespace MouseWarpTool.Models
         /// </summary>
         public void ExportXML(string xml)
         {
-            using (FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\" + xml, FileMode.Create))
+            string path = Directory.GetCurrentDirectory() + "\\" + xml;
+            //!< ReadOnlyを削除
+            EraceFileAttribute(path, FileAttributes.ReadOnly);
+            //!< ファイルExport
+            using (FileStream fs = new FileStream(path, FileMode.Create))
             {
                 // XmlSerializerを使ってファイルに保存（TwitSettingオブジェクトの内容を書き込む）
                 XmlSerializer serializer = new XmlSerializer(typeof(Config));
                 // オブジェクトをシリアル化してXMLファイルに書き込む
                 serializer.Serialize(fs, GetConfig());
             }
+        }
+
+        private void EraceFileAttribute(string path, FileAttributes attrbite)
+        {          
+            // ファイル属性を取得
+            FileAttributes fas = File.GetAttributes(path);
+
+            // 読み取り専用かどうか確認
+            if ((fas & attrbite) == attrbite)
+            {
+                // ファイル属性から読み取り専用を削除
+                fas = fas & ~attrbite;
+            }
+
+            // ファイル属性を設定
+            File.SetAttributes(path, fas);
         }
     }
 }

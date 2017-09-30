@@ -40,7 +40,7 @@ namespace MouseWarpTool
             }
             catch (Exception exception) when (exception is FileNotFoundException)
             {
-                MessageBox.Show("Create config file");
+                MessageBox.Show("Create config file and restart.", "Information");
                 //!< Configファイルを自動作成してみてアプリケーションを再起動を試みる
                 repo.Save(Config.DefaultConfig());
                 repo.ExportXML(".config");
