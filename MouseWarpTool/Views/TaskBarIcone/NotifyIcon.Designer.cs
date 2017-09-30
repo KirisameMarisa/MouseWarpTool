@@ -32,8 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotifyIcon));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ExitCommand = new System.Windows.Forms.ToolStripMenuItem();
             this.ControlCommand = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitCommand = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingOpenCommand = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             // 
             // notifyIcon1
@@ -48,10 +49,17 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ControlCommand,
+            this.SettingOpenCommand,
             this.ExitCommand});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(180, 48);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // ControlCommand
+            // 
+            this.ControlCommand.Name = "ControlCommand";
+            this.ControlCommand.Size = new System.Drawing.Size(179, 22);
+            this.ControlCommand.Text = "toolStripMenuItem1";
             // 
             // ExitCommand
             // 
@@ -59,11 +67,11 @@
             this.ExitCommand.Size = new System.Drawing.Size(179, 22);
             this.ExitCommand.Text = "Exit";
             // 
-            // ControlCommand
+            // SettingOpenCommand
             // 
-            this.ControlCommand.Name = "ControlCommand";
-            this.ControlCommand.Size = new System.Drawing.Size(179, 22);
-            this.ControlCommand.Text = "toolStripMenuItem1";
+            this.SettingOpenCommand.Name = "SettingOpenCommand";
+            this.SettingOpenCommand.Size = new System.Drawing.Size(179, 22);
+            this.SettingOpenCommand.Text = "Setting";
             this.contextMenuStrip1.ResumeLayout(false);
 
         }
@@ -74,5 +82,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ExitCommand;
         private System.Windows.Forms.ToolStripMenuItem ControlCommand;
+        private System.Windows.Forms.ToolStripMenuItem SettingOpenCommand;
     }
 }

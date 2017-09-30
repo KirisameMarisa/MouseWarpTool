@@ -82,15 +82,22 @@
     </ApplicationDefinition>
     <Compile Include="Messages\WindowClipAction.cs" />
     <Compile Include="Messages\WindowClipMessage.cs" />
+    <Compile Include="Models\Config.cs" />
+    <Compile Include="Models\ConfigRepository.cs" />
     <Compile Include="Models\Display.cs" />
+    <Compile Include="Models\ServiceLocator.cs" />
     <Compile Include="ViewModels\DisplayNode.cs" />
     <Compile Include="ViewModels\ScreenHintViewModel.cs" />
+    <Compile Include="ViewModels\SettingViewModel.cs" />
     <Compile Include="Views\Behavior\MouseStateBehavior.cs" />
     <Compile Include="Messages\MouseMoveAction.cs" />
     <Compile Include="Messages\MouseMoveMessage.cs" />
     <Compile Include="Views\Behavior\MouseClickBeavior.cs" />
     <Compile Include="Views\ScreenHintWindow.xaml.cs">
       <DependentUpon>ScreenHintWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingWindow.xaml.cs">
+      <DependentUpon>SettingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TaskBarIcone\NotifyIcon.cs">
       <SubType>Component</SubType>
@@ -126,6 +133,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ScreenHintWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
