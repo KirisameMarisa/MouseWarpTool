@@ -1,4 +1,5 @@
 ﻿using Gma.System.MouseKeyHook;
+using MouseWarpTool.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,6 @@ namespace MouseWarpTool.Views.Behavior
     class MouseClickBeavior : Behavior<FrameworkElement>
     {
         private IKeyboardMouseEvents _globalHook = Hook.GlobalEvents();
-
-        private int _count = 0;
-
-        private System.Windows.Threading.DispatcherTimer _timer = new System.Windows.Threading.DispatcherTimer(DispatcherPriority.Normal);
 
         /// <summary>
         /// マウスクリックした時に実行されるコマンド
@@ -47,33 +44,35 @@ namespace MouseWarpTool.Views.Behavior
 
         public void OnMouseUp(object sender, MouseEventExtArgs args)
         {
-            
             if (System.Windows.Forms.MouseButtons.Middle != args.Button)
             {
                 return;
             }
-
-            _count = 0;
-            _timer.Stop();
         }
 
+        //!< 1s = 1000ms
+        //!< IgnitionTime = Seconds
         public void OnMouseDown(object sender, MouseEventExtArgs args)
         {
+            var config = ServiceLocator.Instance.GetInstance<ConfigRepository>().GetConfig();
+
             if (System.Windows.Forms.MouseButtons.Middle != args.Button)
             {
                 return;
             }
 
-            _timer.Interval = TimeSpan.FromMilliseconds(100);
-            _timer.Start();
-            _timer.Tick += (s, t) =>
+            var designatedTime = TimeSpan.FromSeconds(config.IgnitionTime).TotalMilliseconds;
+            //ストップウォッチを開始する
+            System.Diagnostics.Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
+            DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Send);
+            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Start();                       
+            timer.Tick += (s, t) =>
             {
-                _count++;
-                //!< 3秒待ち
-                if (_count >= 3 * 10)
+                if (sw.Elapsed.TotalMilliseconds >= designatedTime)
                 {
-                    _count = 0;
-                    _timer.Stop();
+                    sw.Stop();
+                    timer.Stop();
                     if (Command != null && Command.CanExecute(sender))
                     {
                         Command.Execute(args);

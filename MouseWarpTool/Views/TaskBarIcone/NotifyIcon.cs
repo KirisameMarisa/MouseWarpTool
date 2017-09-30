@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MouseWarpTool.Views;
 
 namespace MouseWarpTool
 {
@@ -32,6 +33,7 @@ namespace MouseWarpTool
             this.ExitCommand.Click += OnExitCommand;
             this.ControlCommand.Click += OnControlCommand;
             this.ControlCommand.Text = "Pause";
+            this.SettingOpenCommand.Click += OnSettingOpenCommand;
         }
 
         public NotifyIcon(IContainer container)
@@ -39,6 +41,12 @@ namespace MouseWarpTool
             container.Add(this);
 
             InitializeComponent();
+        }
+
+        private void OnSettingOpenCommand(object sender, EventArgs e)
+        {
+            SettingWindow window = new SettingWindow();
+            window.Show();
         }
 
         private void OnExitCommand(object sender, EventArgs e)

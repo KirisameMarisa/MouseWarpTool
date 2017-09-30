@@ -1,0 +1,22 @@
+﻿<Window x:Class="MouseWarpTool.Views.SettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MouseWarpTool.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        mc:Ignorable="d"
+        Topmost="True"
+        Title="SettingWindow" Height="101.5" Width="300">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <l:LivetCallMethodAction MethodName="OnClose" MethodTarget="{Binding Mode=OneWay}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <TextBlock Text="Ignition Time" Margin="5,5,0,0" Height="17.5" VerticalAlignment="Top" Width="75" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding IgnitionTime}" Margin="85,5,132,0" Height="17.5" VerticalAlignment="Top"/>
+        <Slider Maximum="10" Minimum="0" Value="{Binding IgnitionTime}" Margin="5,0,5,5" TickPlacement="Both" Height="38" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>
